@@ -10,8 +10,12 @@ import SwiftUI
 @main
 struct CertfiedServiceAutoAppApp: App {
     var body: some Scene {
+        @State var manager = itemsConditionalManager()
         WindowGroup {
-            ContentView()
+            
+            @Previewable @State var MockItem = itemsConditional(name: "Preview Task", condition: 0)
+            ContentView(item: MockItem)
+                .environment(manager)
         }
     }
 }
